@@ -11,9 +11,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>admin</artifactId>
+    <groupId>com.concentrate.search</groupId>
 
-    <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>servletapi</groupId>
+                <artifactId>servletapi</artifactId>
+                <version>2.4</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
@@ -27,11 +32,6 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-orm</artifactId>
-                <version>3.1.1.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-MVC</artifactId>
                 <version>3.1.1.RELEASE</version>
             </dependency>
             <dependency>
@@ -92,5 +92,4 @@
                 <version>4.3.8.RELEASE</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
 </project>
