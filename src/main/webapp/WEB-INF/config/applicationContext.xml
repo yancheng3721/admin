@@ -55,24 +55,6 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		p:defaultEncoding="UTF-8" p:maxUploadSize="52428800"></bean>
 
-	<!-- 配置JNDI与数据源 -->
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/solrback" />
-
-<!-- 	<bean id="dataSource" -->
-<!--         class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--         <property name="driverClassName"> -->
-<!--             <value>com.ibm.db2.jcc.DB2Driver</value> -->
-<!--         </property> -->
-<!--         <property name="url"> -->
-<!--             <value> jdbc:db2://10.27.19.163:60000/searpre</value> -->
-<!--         </property> -->
-<!--         <property name="username"> -->
-<!--             <value>b2csear</value> -->
-<!--         </property> -->
-<!--         <property name="password"> -->
-<!--             <value>Ie9F83kg</value> -->
-<!--         </property> -->
-<!--     </bean>    -->
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
