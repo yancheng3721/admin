@@ -15,11 +15,11 @@ public class UserDAO extends AbstractedBaseDAO{
     private JdbcTemplate jdbcTemplate;
     
     public String getTBName(){
-    	return "SHE_USER";	
+    	return "T_USER";	
     }
     
     public String getQuerySql(){
-    	return "SELECT A.ID,A.NAME,A.ALIAS,A.STATUS,B.NAME FROM SHE_USER AS A LEFT JOIN SHE_ROLE AS B ON A.ROLE_ID = B.ID";	
+    	return "SELECT A.ID,A.NAME,A.ALIAS,A.STATUS,B.NAME FROM T_USER AS A LEFT JOIN T_ROLE AS B ON A.ROLE_ID = B.ID";	
     }
 	
 	public JdbcTemplate getJdbcTemplate(){

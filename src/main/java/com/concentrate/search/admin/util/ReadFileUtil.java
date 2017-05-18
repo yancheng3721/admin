@@ -29,7 +29,7 @@ public class ReadFileUtil {
 	// 读取本地文件
 	public static <T> List<T> readFile(String fileName, FileRowMapper<T> frm) {
 		List<T> list = new ArrayList<T>();
-		File file = new File("/opt/search/esp-admin/txt");
+		File file = new File("/opt/search/admin/txt");
 		String path = file.getAbsolutePath();
 		try {
 			File f = new File(path + "/" + fileName);

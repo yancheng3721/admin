@@ -39,7 +39,7 @@ import com.concentrate.search.admin.util.ResponseBuilder;
 import com.concentrate.search.admin.vo.ResponseResult;
 import com.concentrate.search.admin.vo.UploadResult;
 import com.concentrate.search.admin.service.system.ModuleRoleMappingService;
-import com.concentrate.search.admin.service.selector.DropDownSelectService;
+import com.concentrate.search.admin.service.system.selector.DropDownSelectService;
 
 
 @Controller
@@ -65,8 +65,8 @@ public class ModuleRoleMappingController {
 		map.put("objs", service.query(param, page));
 		map.put("page", page);
 		map.put("searchbox", param);
-		map.put("ROLE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM SHE_ROLE","ID","NAME"));
-map.put("MODULE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM SHE_MODULE","ID","NAME"));
+		map.put("ROLE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM T_ROLE","ID","NAME"));
+map.put("MODULE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM T_MODULE","ID","NAME"));
 
 		return MAIN_PAGE;
 	}
@@ -80,8 +80,8 @@ map.put("MODULE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM SHE_
 		map.put("objs", service.query(param, page));
 		map.put("page", page);
 		map.put("searchbox", param);
-		map.put("ROLE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM SHE_ROLE","ID","NAME"));
-map.put("MODULE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM SHE_MODULE","ID","NAME"));
+		map.put("ROLE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM T_ROLE","ID","NAME"));
+map.put("MODULE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM T_MODULE","ID","NAME"));
 
 		return MAIN_PAGE;
 	}

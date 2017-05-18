@@ -15,11 +15,11 @@ public class RoleDAO extends AbstractedBaseDAO{
     private JdbcTemplate jdbcTemplate;
     
     public String getTBName(){
-    	return "SHE_ROLE";	
+    	return "T_ROLE";	
     }
     
     public String getQuerySql(){
-    	return "SELECT ID,NAME FROM SHE_ROLE";	
+    	return "SELECT ID,NAME FROM T_ROLE";	
     }
 	
 	public JdbcTemplate getJdbcTemplate(){

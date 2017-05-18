@@ -15,11 +15,11 @@ public class MenuDAO extends AbstractedBaseDAO{
     private JdbcTemplate jdbcTemplate;
     
     public String getTBName(){
-    	return "SHE_MENU";	
+    	return "T_MENU";	
     }
     
     public String getQuerySql(){
-    	return "SELECT A.ID,A.PARENT_ID,B.NAME AS PARENT_NAME,A.NAME,A.URL,A.TYPE FROM SHE_MENU AS A,SHE_MENU AS B WHERE A.PARENT_ID = B.ID";	
+    	return "SELECT A.ID,A.PARENT_ID,B.NAME AS PARENT_NAME,A.NAME,A.URL,A.TYPE FROM T_MENU AS A,T_MENU AS B WHERE A.PARENT_ID = B.ID";	
     }
 	
 	public JdbcTemplate getJdbcTemplate(){

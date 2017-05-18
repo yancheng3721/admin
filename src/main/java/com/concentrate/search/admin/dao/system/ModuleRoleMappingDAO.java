@@ -15,11 +15,11 @@ public class ModuleRoleMappingDAO extends AbstractedBaseDAO{
     private JdbcTemplate jdbcTemplate;
     
     public String getTBName(){
-    	return "SHE_MODULE_ROLE_MAPPING";	
+    	return "T_MODULE_ROLE_MAPPING";	
     }
     
     public String getQuerySql(){
-    	return "SELECT A.MODULE_ID,B.NAME AS MODULE_NAME,A.ROLE_ID,C.NAME AS ROLE_NAME FROM SHE_MODULE_ROLE_MAPPING AS A LEFT JOIN SHE_MODULE AS B ON A.MODULE_ID = B.ID LEFT JOIN SHE_ROLE AS C ON C.ID = A.ROLE_ID;";	
+    	return "SELECT A.MODULE_ID,B.NAME AS MODULE_NAME,A.ROLE_ID,C.NAME AS ROLE_NAME FROM T_MODULE_ROLE_MAPPING AS A LEFT JOIN T_MODULE AS B ON A.MODULE_ID = B.ID LEFT JOIN T_ROLE AS C ON C.ID = A.ROLE_ID;";	
     }
 	
 	public JdbcTemplate getJdbcTemplate(){

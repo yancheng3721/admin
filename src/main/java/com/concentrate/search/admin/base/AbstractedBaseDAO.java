@@ -3,6 +3,7 @@ package com.concentrate.search.admin.base;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -44,8 +45,10 @@ public abstract class AbstractedBaseDAO {
 		typeMap.put(String.valueOf(java.sql.Types.TIMESTAMP), "STRING");
 		typeMap.put(String.valueOf(java.sql.Types.INTEGER), "NUMBER");
 		typeMap.put(String.valueOf(java.sql.Types.DOUBLE), "NUMBER");
-		typeMap.put(String.valueOf(java.sql.Types.DECIMAL), "NUMBER");
-	}
+        typeMap.put(String.valueOf(java.sql.Types.DECIMAL), "NUMBER");
+        typeMap.put(String.valueOf(Types.BIGINT), "NUMBER");
+
+    }
 
 	protected Map<String, String> getColumnInfoMap() {
 		if (coloumnInfo == null || coloumnInfo.size() < 1) {
@@ -70,7 +73,7 @@ public abstract class AbstractedBaseDAO {
 				try {
 					SqlRowSetMetaData srsmd = getJdbcTemplate().queryForRowSet(
 							getQuerySql().replaceAll("#queryParams#", "")
-									+ " FETCH FIRST 1 ROWS ONLY WITH UR")
+									+ " limit 1")
 							.getMetaData();
 					int columnCount = srsmd.getColumnCount();
 					for (int i = 1; i <= columnCount; i++) {
@@ -86,7 +89,7 @@ public abstract class AbstractedBaseDAO {
 				try {
 					List<Map<String, Object>> columns = getJdbcTemplate()
 							.queryForList(
-									"select COLUMN_NAME,DATA_TYPE from sysibm.columns where UPPER(TABLE_NAME) = '"
+									"select COLUMN_NAME,DATA_TYPE from information_schema.columns where UPPER(TABLE_NAME) = '"
 											+ getTBName() + "'");
 					if (columns != null && columns.size() > 0) {
 						for (Map<String, Object> m : columns) {

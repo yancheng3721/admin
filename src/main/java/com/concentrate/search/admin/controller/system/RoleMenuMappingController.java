@@ -39,7 +39,7 @@ import com.concentrate.search.admin.util.ResponseBuilder;
 import com.concentrate.search.admin.vo.ResponseResult;
 import com.concentrate.search.admin.vo.UploadResult;
 import com.concentrate.search.admin.service.system.RoleMenuMappingService;
-import com.concentrate.search.admin.service.selector.DropDownSelectService;
+import com.concentrate.search.admin.service.system.selector.DropDownSelectService;
 
 
 @Controller

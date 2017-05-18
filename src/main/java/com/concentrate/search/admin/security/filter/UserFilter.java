@@ -29,13 +29,6 @@ public class UserFilter implements Filter {
 	static {
 		refreshWhiteList();
 		
-		try {
-			String isDev = PropertiesUtil.read().getProperty("SECURITY.IS_DEV_MODE",
-					"false");
-			isDevMode = "true".equals(isDev);
-		} finally {
-
-		}
 	}
 
 	public void doFilter(ServletRequest srequest, ServletResponse response,

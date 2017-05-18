@@ -15,11 +15,11 @@ public class ModuleDAO extends AbstractedBaseDAO{
     private JdbcTemplate jdbcTemplate;
     
     public String getTBName(){
-    	return "SHE_MODULE";	
+    	return "T_MODULE";	
     }
     
     public String getQuerySql(){
-    	return "SELECT ID,NAME FROM SHE_MODULE";	
+    	return "SELECT ID,NAME FROM T_MODULE";	
     }
 	
 	public JdbcTemplate getJdbcTemplate(){

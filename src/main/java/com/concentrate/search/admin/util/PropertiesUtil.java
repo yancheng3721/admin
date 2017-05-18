@@ -16,7 +16,7 @@ public class PropertiesUtil {
 	private static final Logger log = Logger.getLogger(PropertiesUtil.class);
 	public static final String CLASSPATH_LOAD_WAY = "classpath";
 	public static final String FILE_LOAD_WAY = "file";
-	private static String path = "/opt/search/esp-admin/configs/path.properties";
+	private static String path = "/opt/search/admin/configs/path.properties";
 
 	public PropertiesUtil() {
 		super();

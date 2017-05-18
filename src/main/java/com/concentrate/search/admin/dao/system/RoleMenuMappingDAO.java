@@ -15,11 +15,11 @@ public class RoleMenuMappingDAO extends AbstractedBaseDAO{
     private JdbcTemplate jdbcTemplate;
     
     public String getTBName(){
-    	return "SHE_ROLE_MENU_MAPPING";	
+    	return "T_ROLE_MENU_MAPPING";	
     }
     
     public String getQuerySql(){
-    	return "SELECT A.ROLE_ID,B.NAME AS ROLE_NAME,A.MENU_ID,C.NAME AS MENU_NAME FROM SHE_ROLE_MENU_MAPPING AS A LEFT JOIN SHE_ROLE AS B ON B.ID = A.ROLE_ID LEFT JOIN SHE_MENU AS C ON C.ID = A.MENU_ID";	
+    	return "SELECT A.ROLE_ID,B.NAME AS ROLE_NAME,A.MENU_ID,C.NAME AS MENU_NAME FROM T_ROLE_MENU_MAPPING AS A LEFT JOIN T_ROLE AS B ON B.ID = A.ROLE_ID LEFT JOIN T_MENU AS C ON C.ID = A.MENU_ID";	
     }
 	
 	public JdbcTemplate getJdbcTemplate(){
