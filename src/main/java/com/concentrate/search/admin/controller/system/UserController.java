@@ -39,7 +39,7 @@ import com.concentrate.search.admin.util.ResponseBuilder;
 import com.concentrate.search.admin.vo.ResponseResult;
 import com.concentrate.search.admin.vo.UploadResult;
 import com.concentrate.search.admin.service.system.UserService;
-import com.concentrate.search.admin.service.system.selector.DropDownSelectService;
+import com.concentrate.search.admin.service.selector.DropDownSelectService;
 
 
 @Controller
@@ -65,8 +65,7 @@ public class UserController {
 		map.put("objs", service.query(param, page));
 		map.put("page", page);
 		map.put("searchbox", param);
-		map.put("ROLE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM T_ROLE","ID","NAME"));
-
+		
 		return MAIN_PAGE;
 	}
 
@@ -79,8 +78,7 @@ public class UserController {
 		map.put("objs", service.query(param, page));
 		map.put("page", page);
 		map.put("searchbox", param);
-		map.put("ROLE_IDSelect", dropDownSelectService.query("SELECT ID,NAME FROM T_ROLE","ID","NAME"));
-
+		
 		return MAIN_PAGE;
 	}
 
@@ -240,9 +238,9 @@ public class UserController {
                     result.setMessage("第" + count + "行必须是"+columnLimit+"列！");
                     return ResponseBuilder.ok(result);
                 }
-                if (count > 300) {
+                if (count > 2000) {
                     result.setType(UploadResult.FILE_ERROR);
-                    result.setMessage("每次上传不能超过300条！");
+                    result.setMessage("每次上传不能超过2000条！");
                     return ResponseBuilder.ok(result);
                 }
                 String startTime = "";

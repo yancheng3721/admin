@@ -1,5 +1,6 @@
 package com.concentrate.search.admin.dao.selector;
 
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +28,9 @@ public class SelectorDAO {
 		typeMap.put(String.valueOf(java.sql.Types.TIMESTAMP), "STRING");
 		typeMap.put(String.valueOf(java.sql.Types.INTEGER), "NUMBER");
 		typeMap.put(String.valueOf(java.sql.Types.DOUBLE), "NUMBER");
-		typeMap.put(String.valueOf(java.sql.Types.DECIMAL), "NUMBER");
-	}
+        typeMap.put(String.valueOf(java.sql.Types.DECIMAL), "NUMBER");
+        typeMap.put(String.valueOf(java.sql.Types.BIGINT), "NUMBER");
+    }
 
 	public List<Map<String, Object>> query(String sql,
 			Map<String, String> param, PageCond page) {

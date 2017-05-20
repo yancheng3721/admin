@@ -19,7 +19,7 @@ public class UserDAO extends AbstractedBaseDAO{
     }
     
     public String getQuerySql(){
-    	return "SELECT A.ID,A.NAME,A.ALIAS,A.STATUS,B.NAME FROM T_USER AS A LEFT JOIN T_ROLE AS B ON A.ROLE_ID = B.ID";	
+    	return "SELECT ID,NAME,ALIAS,STATUS,CREATE_TIME,UPDATE_TIME,UPDATE_USER FROM T_USER";	
     }
 	
 	public JdbcTemplate getJdbcTemplate(){

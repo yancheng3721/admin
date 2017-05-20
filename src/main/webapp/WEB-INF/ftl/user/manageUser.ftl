@@ -1,10 +1,8 @@
 
-<#include   "/head/head.ftl">
+
 
 <script type="text/javascript">
-if('${_msg}'!=null&&'${_msg}'!=""){
-   alert('${_msg}');
-}
+
 $(function() {
 
 	$("#saveDialog").hide();
@@ -31,7 +29,7 @@ $(function() {
 		});
 		
 	});	
-	var allFiledsStr = '[{"_CN_":"ID","_KEY_":"ID"},{"_CN_":"用户名","_KEY_":"NAME","_NOT_NULL_":"1"},{"_CN_":"别名","_KEY_":"ALIAS"},{"_CN_":"密码","_KEY_":"PASSWORD","_NOT_NULL_":"1"},{"_CN_":"角色ID","_KEY_":"ROLE_ID","_NOT_NULL_":"1"},{"_CN_":"账号状态","_KEY_":"STATUS","_NOT_NULL_":"1"},{"_CN_":"更新用户","_KEY_":"UPDATE_USER"},{"_CN_":"创建时间","_KEY_":"CREATE_TIME"},{"_CN_":"更新时间","_KEY_":"UPDATE_TIME"}]';
+	var allFiledsStr = '[{"_CN_":"ID","_KEY_":"ID"},{"_CN_":"用户名","_KEY_":"NAME","_NOT_NULL_":"1"},{"_CN_":"别名","_KEY_":"ALIAS"},{"_CN_":"密码","_KEY_":"PASSWORD","_NOT_NULL_":"1"},{"_CN_":"账号状态","_KEY_":"STATUS","_NOT_NULL_":"1"},{"_CN_":"更新用户","_KEY_":"UPDATE_USER"},{"_CN_":"创建时间","_KEY_":"CREATE_TIME"},{"_CN_":"更新时间","_KEY_":"UPDATE_TIME"}]';
 	var allFileds = eval('('+allFiledsStr+')');
 	//弹出保存框
 	function showSave(obj){
@@ -465,7 +463,7 @@ $(function() {
 		<div class="mRtBox">
 		
 			<div class="rTitle" >
-				<h3><i class="title"></i><span id="title">用户管理管理</span></h3>
+				<h3><i class="title"></i><span id="title">用户管理</span></h3>
 				<div class="description-btn">
 					<a href="#" class="btn-minimize">功能说明&nbsp;<i class="fa fa-caret-down"></i></a>
 				</div>
@@ -492,6 +490,9 @@ $(function() {
 </td><td class='tdName'>别名：</td>
 <td style='width:140px;'>
 <input name='searchbox.ALIAS' type='text' id='searchbox.ALIAS'  value='${searchbox["ALIAS"]}' />
+</td><td class='tdName'>账号状态：</td>
+<td style='width:140px;'>
+<input name='searchbox.STATUS' type='text' id='searchbox.STATUS'  value='${searchbox["STATUS"]}' />
 </td></tr>
 
 					
@@ -499,7 +500,7 @@ $(function() {
 				
 			</div>
 			<div class="searchCenter">
-				<input type="hidden" name="exportFields" value="NAME,ALIAS"/>
+				<input type="hidden" name="exportFields" value="NAME,ALIAS,STATUS"/>
 				<button id='addBtn' type="button"><span><span>新增</span></span></button>
 				
 				<button id='batchDelBtn' type="button"><span><span>批量删除</span></span></button>
@@ -517,6 +518,9 @@ $(function() {
 					<th>用户名</th>
 <th>别名</th>
 <th>账号状态</th>
+<th>创建时间</th>
+<th>更新时间</th>
+<th>更新用户</th>
 
 					<th style="width:80px;">操作</th>
 				</tr>
@@ -529,6 +533,9 @@ $(function() {
 					<td>${obj.NAME}</td>
 <td>${obj.ALIAS}</td>
 <td>${obj.STATUS}</td>
+<td>${obj.CREATE_TIME}</td>
+<td>${obj.UPDATE_TIME}</td>
+<td>${obj.UPDATE_USER}</td>
 
 
 					<td>
@@ -558,7 +565,7 @@ $(function() {
 		</div>
 
 </div>
-<div id="saveDialog" title="用户管理保存" style="display:none" >
+<div id="saveDialog" title="用户保存" style="display:none" >
 	<input type="hidden" class="savebox" name="saveboxID" id="saveboxID" >
 	<div class="box-content">
 	<table style="margin-top:10px;font-size:12px;">
@@ -574,18 +581,6 @@ $(function() {
 <tr style='height:35px;'>
 <td width='140px' align='right'>密码：</td>
 <td> <input type='text' class='savebox'  name='saveboxPASSWORD' id='saveboxPASSWORD' ></td>
-</tr>
-<tr style='height:35px;'> 
-<td width='140px' align='right'>角色ID：</td>
-<td><select style='width:100%;' class='savebox'  name='saveboxROLE_ID' id='saveboxROLE_ID'>
-	<option value=''>选择角色ID</option>
-<#if ROLE_IDSelect??>
-<#list ROLE_IDSelect?keys as key>
-	<option value='${key}'>${ROLE_IDSelect[key]}</option>
-</#list>
-</#if>
-	</select>
-</td>
 </tr>
 <tr style='height:35px;'>
 <td width='140px' align='right'>账号状态：</td>
@@ -608,11 +603,11 @@ $(function() {
 	</span>
 </div>
 <#--批量上传-->
-<div class="showBox" id="batchupload" style="display:none;" title="用户管理批量上传">
+<div class="showBox" id="batchupload" style="display:none;" title="用户批量上传">
 	<form action="/admin/user/uploadUser.do" method="POST" id="sguploadForm" name="sguploadForm" enctype="multipart/form-data" onsubmit="return false;">
 		<div style="text-align: center;margin: 10px 0;">
 			<span>路径：</span>
-			<input type="hidden" name="importFields" value="NAME,ALIAS,PASSWORD,ROLE_ID,STATUS"/>
+			<input type="hidden" name="importFields" value="NAME,ALIAS,PASSWORD,STATUS"/>
 			<input type="file" name="scan" id="scan"  style="height:26px;width:220px"></input>
 			<button name="send" id="sendFileBtn" type="button" ><span><span >上传</span></span></button>
 		</div>
@@ -624,7 +619,7 @@ $(function() {
 				<h3>记录字段顺序</h3>
 			</div>
 			<table width="100%" class="up_table" border="1">
-				<th>用户名</th><th>别名</th>
+				<th>用户名</th><th>别名</th><th>账号状态</th>
 			</table>
 			<div class="rTitle" align="left">
 				<h3>上传注意事项</h3>

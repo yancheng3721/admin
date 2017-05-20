@@ -18,44 +18,44 @@ public class PageUtil {
 	public static <T> List<T> doPage(JdbcTemplate jdbcTemplate, String sql,
 			RowMapper<T> rm, PageCond page) {
 		sql = sql.toLowerCase();
-		String sqlCount = "SELECT COUNT (*) FROM (" + replaceOrderBy(sql)
+		String sqlCount = "SELECT COUNT(*) FROM (" + replaceOrderBy(sql)
 				+ ") AS T";
 		int ALL = jdbcTemplate.queryForInt(sqlCount);
 		page.setTotal(ALL);
 		page.reCalculate();
 
-		String sqlPageBegin = "select * from (SELECT ROWNUMBER() OVER() AS RN,DK.* FROM (";
-		String sqlPageEnd = ")as DK) as T where T.RN > " + page.getBegin()
-				+ " FETCH FIRST " + page.getLength() + " ROWS ONLY ";
+		String sqlPageBegin = "select * from (";
+		String sqlPageEnd = ")as T limit " + page.getBegin()
+				+ "," + page.getLength();
 		return jdbcTemplate.query(sqlPageBegin + sql + sqlPageEnd, rm);
 	}
 
 	public static <T> List<T> doPageNotToLowerCase(JdbcTemplate jdbcTemplate,
 			String sql, RowMapper<T> rm, PageCond page) {
-		String sqlCount = "SELECT COUNT (*) FROM (" + replaceOrderBy(sql)
+		String sqlCount = "SELECT COUNT(*) FROM (" + replaceOrderBy(sql)
 				+ ") AS T";
 		int ALL = jdbcTemplate.queryForInt(sqlCount);
 		page.setTotal(ALL);
 		page.reCalculate();
 
-		String sqlPageBegin = "select * from (SELECT ROWNUMBER() OVER() AS RN,DK.* FROM (";
-		String sqlPageEnd = ")as DK) as T where T.RN > " + page.getBegin()
-				+ " FETCH FIRST " + page.getLength() + " ROWS ONLY ";
+		String sqlPageBegin = "select * from ((";
+		String sqlPageEnd = ")as T limit " + page.getBegin()
+				+ "," + page.getLength();
 		return jdbcTemplate.query(sqlPageBegin + sql + sqlPageEnd, rm);
 	}
 
 	public static List<Map<String, Object>> doPage(JdbcTemplate jdbcTemplate,
 			String sql, PageCond page, Object... params) {
 		sql = sql.toLowerCase();
-		String sqlCount = "SELECT COUNT (*) FROM (" + replaceOrderBy(sql)
+		String sqlCount = "SELECT COUNT(*) FROM (" + replaceOrderBy(sql)
 				+ ") AS T";
 		int ALL = jdbcTemplate.queryForInt(sqlCount, params);
 		page.setTotal(ALL);
 		page.reCalculate();
 
-		String sqlPageBegin = "select * from (SELECT ROWNUMBER() OVER() AS RN,DK.* FROM (";
-		String sqlPageEnd = ")as DK) as T where T.RN > " + page.getBegin()
-				+ " FETCH FIRST " + page.getLength() + " ROWS ONLY ";
+		String sqlPageBegin = "select * from (";
+		String sqlPageEnd = ") as T limit " + page.getBegin()
+				+ "," + page.getLength() ;
 		return jdbcTemplate.queryForList(sqlPageBegin + sql + sqlPageEnd,
 				params);
 	}
@@ -64,16 +64,16 @@ public class PageUtil {
 			JdbcTemplate jdbcTemplate, String sql, PageCond page,
 			String condition, Object... params) {
 		sql = sql.toLowerCase();
-		String sqlCount = "SELECT COUNT (*) FROM (" + replaceOrderBy(sql)
+		String sqlCount = "SELECT COUNT(*) FROM (" + replaceOrderBy(sql)
 				+ ") AS T WHERE 1=1 " + condition;
 		int ALL = jdbcTemplate.queryForInt(sqlCount, params);
 		page.setTotal(ALL);
 		page.reCalculate();
 
-		String sqlPageBegin = "select * from (SELECT ROWNUMBER() OVER() AS RN,DK.* FROM (";
+		String sqlPageBegin = "select * from (";
 		String sqlPageEnd = ")as DK where 1=1 " + condition
-				+ ") as T where T.RN > " + page.getBegin() + "  FETCH FIRST "
-				+ page.getLength() + " ROWS ONLY WITH UR";
+				+ " limit " + page.getBegin() + ","
+				+ page.getLength();
 		return jdbcTemplate.queryForList(sqlPageBegin + sql + sqlPageEnd,
 				params);
 	}
@@ -87,13 +87,8 @@ public class PageUtil {
 			while (tmp.indexOf("  ") > -1) {
 				tmp = tmp.replace("  ", " ");
 			}
-			if (tmp.indexOf("fetch first") > -1) {
-				tmp = tmp.substring(0, tmp.indexOf("order by"))
-						+ tmp.substring(tmp.indexOf("fetch first"),
-								tmp.length());
-			} else {
-				tmp = tmp.substring(0, tmp.indexOf("order by")) + " with ur";
-			}
+
+			tmp = tmp.substring(0, tmp.indexOf("order by"));
 			result = tmp;
 		} catch (Exception e) {
 			logger.error("", e);
@@ -116,7 +111,7 @@ public class PageUtil {
 	}
 
 	public static void main(String[] args) {
-		String sql = "SELECT ORDER FROM TTT ORDER    BY ORDER DESC FETCH FIRST 10 ROWS ONLY WITH UR";
+		String sql = "SELECT ORDER FROM TTT ORDER    BY ORDER DESC LIMIT 0,1";
 		String replaced = PageUtil.replaceOrderBy(sql);
 		System.out.println(replaced);
 	}
