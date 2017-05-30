@@ -425,7 +425,7 @@ public abstract class AbstractedBaseDAO {
 			result = getJdbcTemplate().queryForMap(
 					"SELECT * FROM ("
 							+ getQuerySql().replaceAll("#queryParams#", "")
-							+ ") WHERE ID=" + param.get("ID"));
+							+ ") AS _T WHERE ID=" + param.get("ID"));
 		}
 		return result;
 	}

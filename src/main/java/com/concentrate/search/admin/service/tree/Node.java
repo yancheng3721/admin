@@ -26,9 +26,7 @@ public interface Node {
     public boolean isLeaf();
     
     public void setLeaf(boolean leaf) ;
-    
-    public void setStat(int stat);
-    
+
     int getCoreRoot();
     
     void setCoreRoot(int coreRoot);

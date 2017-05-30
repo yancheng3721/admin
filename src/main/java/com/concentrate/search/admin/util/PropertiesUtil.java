@@ -68,7 +68,7 @@ public class PropertiesUtil {
 		return p;
 	}
 
-	public synchronized void store(Properties p, String path) {
+	public static synchronized void store(Properties p, String path) {
 		if (StringUtils.isNotEmpty(path)) {
 			File f = new File(path);
 			OutputStream os = null;

@@ -45,7 +45,7 @@ import com.concentrate.search.admin.service.selector.DropDownSelectService;
 @Controller
 public class UserController {
 
-	public static final String MAIN_PAGE = "/user/manageUser";
+	public static final String MAIN_PAGE = "/system/manageUser";
 	
 	private static Logger logger = LoggerFactory
 			.getLogger(UserController.class);

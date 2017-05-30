@@ -16,11 +16,7 @@ public class DefaultNode implements Node {
     protected Node parent;
     protected boolean leaf;
     protected Collection<Node> children;
-    /**
-     * 目录状态， 用于展示，0：正常，1：存在pc不存在终端，2：存在终端不存在pc，3：pc端的虚拟目录（不挂商品）
-     */
-    protected int stat = 0;
-    
+
     /**
      * 频道下目录数据是否发生变化，如果发生变化需要同步，1：变化，2：未变化
      */
@@ -80,18 +76,9 @@ public class DefaultNode implements Node {
         this.children = children;
     }
 
-
     public Collection<Node> getChildren() {
         return this.children;
     }
-
-	public int getStat() {
-		return stat;
-	}
-
-	public void setStat(int stat) {
-		this.stat = stat;
-	}
 
 	public int getIsChanged() {
 		return isChanged;

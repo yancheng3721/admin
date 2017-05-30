@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.concentrate.search.esp.util.PropertiesUtil;
+import com.concentrate.search.admin.util.PropertiesUtil;
 
 public class ConfigUpdater {
     

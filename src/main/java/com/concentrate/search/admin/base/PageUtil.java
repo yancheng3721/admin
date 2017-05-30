@@ -87,8 +87,10 @@ public class PageUtil {
 			while (tmp.indexOf("  ") > -1) {
 				tmp = tmp.replace("  ", " ");
 			}
+            if(tmp.indexOf("order by")>-1){
+                tmp = tmp.substring(0, tmp.indexOf("order by"));
+            }
 
-			tmp = tmp.substring(0, tmp.indexOf("order by"));
 			result = tmp;
 		} catch (Exception e) {
 			logger.error("", e);

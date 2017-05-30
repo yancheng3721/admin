@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework:spring-context:3.1.1.release">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../apache-maven-3.1.0/repository/org/springframework/spring-context/3.1.1.RELEASE/spring-context-3.1.1.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../apache-maven-3.1.0/repository/org/springframework/spring-context/3.1.1.release/spring-context-3.1.1.release-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../apache-maven-3.1.0/repository/org/springframework/spring-context/3.1.1.release/spring-context-3.1.1.release-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
