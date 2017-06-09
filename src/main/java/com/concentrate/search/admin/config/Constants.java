@@ -6,11 +6,11 @@ import com.concentrate.search.admin.util.PropertiesUtil;
 
 public class Constants {
 	public static Properties p = new Properties();;
-	public static final String CONFIG_FILE = "/opt/search/concentrate/configs/concentrate_configs.properties";
-	public static final String CONFIG_PATH = "/opt/search/concentrate/configs/";
+	public static final String CONFIG_FILE = "/opt/concentrate/admin/configs/concentrate_configs.properties";
+	public static final String CONFIG_PATH = "/opt/concentrate/admin/configs/";
 	public static final String MODULE_FILE = "modules.txt";
 
-	public static final String DATA_PATH = "/opt/search/concentrate/txt/";
+	public static final String DATA_PATH = "/opt/concentrate/admin/txt/";
 
 	static {
 		initial();

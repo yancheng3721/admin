@@ -53,7 +53,9 @@ public class ConfigUpdater {
                                 } else if (f.getType().equals(long.class)||f.getType().equals(Long.class)) {
                                         value= Long.parseLong(v);
                                 } else if (f.getType().equals(float.class)||f.getType().equals(Float.class)) {
-                                        value= Float.parseFloat(v);
+                                    value= Float.parseFloat(v);
+                                }else if (f.getType().equals(double.class)||f.getType().equals(Double.class)) {
+                                    value= Double.parseDouble(v);
                                 } else {
                                     LOGGER.warn("未支持的属性类型：属性名 " + k + " | 属性值-" + v
                                             + " | 属性类型-" + f.getType().getName());

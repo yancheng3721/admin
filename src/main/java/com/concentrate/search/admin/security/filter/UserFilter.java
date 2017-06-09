@@ -24,8 +24,6 @@ public class UserFilter implements Filter {
 
 	private static Map<String, String> whiteList = new HashMap<String, String>();
 	private static final Logger logger = LoggerFactory.getLogger(UserFilter.class);
-	@SuppressWarnings("unused")
-	private static boolean isDevMode = false;
 	static {
 		refreshWhiteList();
 		
